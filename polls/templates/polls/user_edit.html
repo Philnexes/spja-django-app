@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Edit{% endblock %}
+
+{% block content %}
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'polls:user_edit_save' user.id %}" method="post">
+{% csrf_token %}
+     <table border="0">
+        <tr>
+            <td><label>Nick: </label></td>
+            <td><input type="text" name="nick" value="{{ user.nick }}" /><input type="text" name="icon" value="{{ user.icon }}" class="iconinput" />
+            </td>
+        </tr>
+        <tr>
+            <td><label>Password: </label></td>
+            <td><input type="password" name="pswd" value="{{ user.pswd }}" /></td>
+        </tr>
+        <tr>
+            <td><label>Text: </label></td>
+            <td><textarea name="text" rows="5" cols="40">{{ user.text }}</textarea></td>
+        </tr>
+    </table>
+<input type="submit" value="Update" />
+</form>
+
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Post detail{% endblock %}
+
+{% block content %}
+
+{% if post %}
+    <ul>    
+        <li class="post">
+          <!--<a href="{% url 'polls:detail' post.id %}"> !-->  
+            <div class="nick">{{ post.nick }}</div>
+            <div class="post_text">{{ post.post_text }}</div>
+            <span class="likes">Likes: {{ post.likes }}</span>
+            <span class="comments">Comments: {{ post.comments_count }}</span>  
+            <span class="pub_date">{{ post.pub_date }}</span> 
+            <div class="con">
+              <a href="{% url 'polls:like' post.id %}"><i class="fa fa-thumbs-up"></i> Like</a>
+              <a href="{% url 'polls:detail' post.id %}"><i class="fa fa-eye"></i> Detail</a>
+              <a href="{% url 'polls:edit' post.id %}"><i class="fa fa-pencil"></i> Edit</a>
+              <a href="{% url 'polls:delete' post.id %}"><i class="fa fa-trash"></i> Delete</a>
+            </div>           
+          <!--</a> !--> 
+        </li>                     
+        <ul class="comment"> 
+        {% for comment in post.comments %}
+          <li>  
+            {{ comment.pub_date }}<br />  
+            <b>{{ comment.nick }}</b>:<br />
+            {{ comment.comment_text }}
+          </li>
+        {% endfor %} 
+        </ul>
+        <a href="{% url 'polls:comment' post.id %}"><i class="fa fa-plus"></i> Add comment</a>
+    </ul>
+{% else %}
+    <p>No post.</p>
+{% endif %}
+
+{% endblock %}

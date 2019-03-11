@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'content/plugins/fa/css/font-awesome.min.css' %}" />
+    <title>{% block title %}MGŠakovo a Philnexovo site úplně k ničemu{% endblock %}</title>
+</head>
+
+<body id="bg" style="background-image: url('{% static "images/overwatch.jpg"%}');">
+        <div id="sidebar">
+            {% block sidebar %}
+            <h1><i class="fa fa-globe"></i> Overpost</h1>
+            <ul class="fa-ul">
+                <li><i class="fa fa-li fa-home"></i><a href="{% url 'polls:index' %}">Domů</a></li>
+                <li><i class="fa fa-li fa-users"></i><a href="{% url 'polls:users' %}">Uživatelé</a></li>
+                <li><i class="fa fa-li fa-plus"></i><a href="{% url 'polls:add' %}">Přidat post</a></li>
+                <li><i class="fa fa-li fa-user-plus"></i><a href="{% url 'polls:user_register' %}">Registrovat</a></li>
+            </ul>
+            {% endblock %}
+        </div>
+
+        <div id="content">
+            {% block content %}{% endblock %}
+        </div>
+</body>
+</html>

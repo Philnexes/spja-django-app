@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}User detail{% endblock %}
+
+{% block content %}
+
+{% if user %}
+
+<ul>
+    <li class="user">
+        <div class="nick"><a href="{% url 'polls:user_edit' user.id %}"><i class="fa fa-{{ user.icon }}"></i> {{ user.nick }}</a></div>
+        <div class="text">{{ user.text }}</div>
+    </li>
+    <ul class="message">
+        {% for message in user.comments %}
+          <li>
+            {{ message.pub_date }}<br />
+              <b><i class="fa fa-{{ message.icon }}"></i> {{ message.nick }}</b>:<br />
+            {{ message.text }}
+          </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'polls:message' user.id %}"><i class="fa fa-plus"></i> Add message</a>
+</ul>
+{% else %}
+    <p>No user.</p>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,65 @@
+body {
+    color: gold;
+    background: rgb(0,0,0);
+    background-size: auto;
+    background-repeat: no-repeat;
+}
+body a{
+    text-decoration: none;
+    color: aqua;
+}
+
+#content ul{
+  list-style-type: none;
+}
+
+#content li{
+  margin: 10px 0 10px 0;
+  border: 1px solid black;
+  padding: 5px;
+  width: 400px;
+}
+
+
+ul.comment li, ul.message li{
+  width: 360px !important;
+}
+
+#sidebar{
+	width: 18%;
+	float: left;
+	display: block;
+    background: rgba(0,0,0,0.5);
+    border-radius: 10px;
+    padding: 1%;
+}
+
+#content{
+	width: 80%;
+	float: left;
+	display: block;
+}
+
+.post, .comment li, .message li, .user {
+    background: rgba(0,0,0,0.5);
+}
+
+.post_text, .text{
+  text-align: center;
+  padding: 5px 0 5px 0;
+  border-bottom: 1px solid gray;
+}
+
+.con{
+  /*margin: 10px 0 0 250px;*/
+    text-align: right;
+}
+.con a {
+    text-decoration: none;
+    padding-left: 10px;
+}
+
+.iconinput {
+    width: 100px;
+    opacity: 0.5;
+}

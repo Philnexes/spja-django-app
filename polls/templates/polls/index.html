@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Index{% endblock %}
+
+{% block content %}
+
+{% if latest_posts_list %}
+    <ul>    
+    {% for post in latest_posts_list%}
+        <li class="post">
+          <!--<a href="{% url 'polls:detail' post.id %}"> !-->  
+            <div class="nick">{{ post.nick }}</div>
+            <div class="post_text">{{ post.post_text }}</div>
+            <span class="likes">Likes: {{ post.likes }}</span>
+            <span class="comments">Comments: {{ post.comments_count }}</span>  
+            <span class="pub_date">{{ post.pub_date }}</span> 
+            <div class="con">
+              <a href="{% url 'polls:like' post.id %}"><i class="fa fa-thumbs-up"></i> Like</a>
+              <a href="{% url 'polls:detail' post.id %}"><i class="fa fa-eye"></i> Detail</a>
+              <a href="{% url 'polls:edit' post.id %}"><i class="fa fa-pencil"></i> Edit</a>
+              <a href="{% url 'polls:delete' post.id %}"><i class="fa fa-trash"></i> Delete</a>
+            </div>           
+          <!--</a> !-->            
+        </li>        
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Nic k vidění.</p>
+{% endif %}
+
+{% endblock %}
+

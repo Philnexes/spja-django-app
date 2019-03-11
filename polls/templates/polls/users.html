@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Index{% endblock %}
+
+{% block content %}
+
+{% if latest_users_list %}
+    <ul>    
+    {% for user in latest_users_list%}
+        <li class="post">
+            <div class="nick"><a href="{% url 'polls:user_detail' user.id %}"><i class="fa fa-{{ user.icon }}"></i> {{ user.nick }}</a></div>
+            <!--<div class="text">{{ user.text }}</div>-->
+        </li>        
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Nic k vidění.</p>
+{% endif %}
+
+{% endblock %}
+
